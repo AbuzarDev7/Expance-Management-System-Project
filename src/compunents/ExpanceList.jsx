@@ -1,41 +1,35 @@
-import React from "react";
 
-const ExpanceList = ({ expenses = [], onDelete, onEdit }) => {
-  if (expenses.length === 0) {
-    return <p className="text-center mt-4 text-gray-500">No expenses found</p>;
-  }
 
+
+import React from 'react'
+
+const ExpanceList = ({transaction, setTransaction }) => {
   return (
-    <ul className="divide-y divide-gray-200">
-      {expenses.map((exp, index) => (
-        <li key={index} className="flex justify-between items-center py-2">
+     <div className="bg-white p-6 rounded-2xl shadow-lg">
+      <h2 className="text-2xl font-bold mb-4 text-gray-800">📋 Expense List</h2>
+
+      <div className="space-y-4">
+        <div className="flex justify-between items-center p-4 bg-gray-50 rounded-xl shadow hover:scale-105 transition">
           <div>
-            <p className="font-medium">{exp.name}</p>
-            <p className="text-sm text-gray-500">{exp.category} - {exp.date}</p>
+            <p className="font-semibold">Sample Expense</p>
+            <p className="text-sm text-gray-500">Food • 2025-01-01</p>
           </div>
           <div className="flex items-center gap-4">
-            <span className="font-semibold">${exp.amount}</span>
-
-            {/* Delete */}
-            <button
-              onClick={() => onDelete(index)}
-              className="text-red-500 hover:text-red-700 font-semibold"
-            >
-              Delete
-            </button>
-
-            {/* Edit */}
-            <button
-              onClick={() => onEdit(index)}
-              className="text-blue-500 hover:text-blue-700 font-semibold"
-            >
+            <span className="font-bold text-red-500">$0</span>
+            <button className="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600 transition">
               Edit
             </button>
+            <button className="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition">
+              Delete
+            </button>
           </div>
-        </li>
-      ))}
-    </ul>
-  );
-};
+        </div>
+      </div>
+    </div>
+  )
+}
 
-export default ExpanceList;
+export default ExpanceList
+
+
+
