@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import HeaderBtns from './compunents/HeaderBtns'
 import ExpanceList from './compunents/ExpanceList'
@@ -9,6 +9,8 @@ const App = () => {
 
 
   const [trasiction, setTransection] = useState([]);
+ 
+  
   const cashIn = trasiction
     .filter((e) => e.type === "in")
     .reduce((acc, cVal) => acc + cVal.amount, 0)
