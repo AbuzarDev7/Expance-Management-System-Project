@@ -54,10 +54,38 @@ const ExpanceList = ({ transaction, setTransaction }) => {
     setTransaction(update)
   }
 
+  const sortAmount = () =>{
+     const sorted = [...transaction]
+     sorted.sort((a,b)=>{
+      return b.amount - a.amount
+    })
+    setTransaction(sorted)  
+  }
+  const sortDate =()=>{
+    const sorted  = [...transaction];
+    sorted.sort((a,b)=>{
+      return new Date(b.date) - new Date(a.date)
+    })
+    setTransaction(sorted)
+  }
+
   return (
     <div className="bg-white p-6 rounded-2xl shadow-lg">
       <h2 className="text-2xl font-bold mb-4 text-gray-800">📋 Expense List</h2>
-
+  <div className="flex gap-3 mb-4">
+        <button
+          onClick={sortAmount}
+          className="px-4 py-2 rounded-lg font-semibold bg-purple-500 text-white hover:bg-purple-600"
+        >
+           Sort by Amount
+        </button>
+        <button
+          onClick={sortDate}
+          className="px-4 py-2 rounded-lg font-semibold bg-blue-500 text-white hover:bg-blue-600"
+        >
+           Sort by Date
+        </button>
+      </div>
       {transaction.length === 0 ? (
         <p className="text-center text-gray-500">No transactions yet!</p>
       ) : (
